@@ -31,15 +31,30 @@ const Range = styled.div`
   width: calc(${(props) => props.width}% + 8px);
 `
 
+const Data = styled.div`
+  position: absolute;
+  ${(props) => (props.middle ? "bottom: -4px;" : "top: -4px;")}
+
+  left: calc(${(props) => props.left}%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-50%);
+`
+
 const Dot = styled.div`
   width: 16px;
   height: 16px;
   border-radius: 50%;
   background: #0a3d62;
-  position: absolute;
-  top: -4px;
-  left: calc(${(props) => props.left}% - 8px);
 `
+
+const Stat = styled.p`
+  font-weight: bold;
+  color: #0a3d62;
+`
+
+const labels = ["Low", "Average", "High"]
 
 const RangeChart = ({ data, maxValue }) => {
   return (
@@ -50,9 +65,21 @@ const RangeChart = ({ data, maxValue }) => {
           left={(data[0] / maxValue) * 100}
           width={((data[2] - data[0]) / maxValue) * 100}
         />
-        {data.map((d) => {
+        {data.map((d, i) => {
           const pos = (d / maxValue) * 100
-          return <Dot left={pos} />
+          return i === 1 ? (
+            <Data key={i} left={pos} middle>
+              <Stat>${d}</Stat>
+              <p>{labels[i]}</p>
+              <Dot />
+            </Data>
+          ) : (
+            <Data key={i} left={pos}>
+              <Dot />
+              <Stat>${d}</Stat>
+              <p>{labels[i]}</p>
+            </Data>
+          )
         })}
       </Chart>
     </Container>

@@ -46,11 +46,7 @@ const DataVizCard = styled.div`
   border: 1px solid #dee9f1;
 `
 
-const data = [76, 106, 213]
-
-const max = 230
-
-const MainSection = (props) => {
+const MainSection = ({ data }) => {
   return (
     <Container>
       <div>
@@ -67,7 +63,7 @@ const MainSection = (props) => {
         </DataVizCard>
         <DataVizCard>
           <p>Typical Price Range</p>
-          <RangeChart data={data} maxValue={max} />
+          <RangeChart data={data.costs} maxValue={data.max} />
           <p>California</p>
         </DataVizCard>
       </MainContent>
