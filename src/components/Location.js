@@ -12,12 +12,7 @@ const Place = styled.h3`
 const Location = ({ location }) => {
   return (
     <div style={{ display: "flex", alignItems: "flex-end" }}>
-      <img
-        width={16}
-        height={16}
-        alt="location icon"
-        src="./location.svg"
-      ></img>
+      <img width={16} height={16} alt="location icon" src="/location.svg"></img>
       <Place>{location}</Place>
     </div>
   )

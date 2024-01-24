@@ -7,6 +7,7 @@ import Footer from "./components/Footer"
 import { useData } from "./components/useData"
 import { formatData } from "./utils"
 import { useMemo } from "react"
+import { Route, Routes, useParams, Navigate } from "react-router"
 
 const Container = styled.div`
   margin: 0 auto;
@@ -22,31 +23,55 @@ const Line = styled.div`
 `
 
 // later, these variables will be set dynamically, through routing for example
-const STATE = "CA"
-const procedure = "electrocardiogram-ekg"
+const defaultState = "CA"
+const defaultProcedure = "electrocardiogram-ekg"
 
 // main app
 function App() {
-  const costs = useData("./data/cost.csv")
-  const lookupTable = useData("./data/labels.csv")
-
-  const data = useMemo(
-    () => formatData(costs, lookupTable, STATE, procedure),
-    [costs, lookupTable]
-  )
+  const costs = useData("/data/cost.csv")
+  const lookupTable = useData("/data/labels.csv")
 
   return (
     <Container>
-      {data && (
-        <>
-          <NavBar state={data.location} />
-          <Hero title={data.procedure} description={data.description} />
-          <MainSection data={data} />
-        </>
-      )}
+      <Routes>
+        {costs && lookupTable && (
+          <>
+            <Route
+              path="/"
+              element={
+                <Navigate to={`/${defaultProcedure}/${defaultState}`} replace />
+              }
+            />
+
+            <Route
+              path="/:procedure/:state"
+              element={<Page costs={costs} lookupTable={lookupTable} />}
+            />
+          </>
+        )}
+      </Routes>
+
       <Line />
       <Footer />
     </Container>
+  )
+}
+
+function Page({ costs, lookupTable }) {
+  const { procedure, state } = useParams()
+
+  const data = useMemo(
+    () => formatData(costs, lookupTable, state, procedure),
+    [costs, lookupTable, procedure, state]
+  )
+
+  console.log(procedure, state)
+  return (
+    <>
+      <NavBar state={data.location} />
+      <Hero title={data.procedure} description={data.description} />
+      <MainSection data={data} />
+    </>
   )
 }
 
