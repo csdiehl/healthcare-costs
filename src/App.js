@@ -1,13 +1,9 @@
-import "./App.css"
+import { Navigate, Route, Routes } from "react-router"
 import styled from "styled-components"
-import NavBar from "./components/NavBar"
-import Hero from "./components/Hero"
-import MainSection from "./components/MainSection"
+import "./App.css"
 import Footer from "./components/Footer"
+import Page from "./components/Page"
 import { useData } from "./components/useData"
-import { formatData } from "./utils"
-import { useMemo } from "react"
-import { Route, Routes, useParams, Navigate } from "react-router"
 
 const Container = styled.div`
   margin: 0 auto;
@@ -54,24 +50,6 @@ function App() {
       <Line />
       <Footer />
     </Container>
-  )
-}
-
-function Page({ costs, lookupTable }) {
-  const { procedure, state } = useParams()
-
-  const data = useMemo(
-    () => formatData(costs, lookupTable, state, procedure),
-    [costs, lookupTable, procedure, state]
-  )
-
-  console.log(procedure, state)
-  return (
-    <>
-      <NavBar state={data.location} />
-      <Hero title={data.procedure} description={data.description} />
-      <MainSection data={data} />
-    </>
   )
 }
 
