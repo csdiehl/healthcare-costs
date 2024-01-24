@@ -4,10 +4,18 @@ import styled from "styled-components"
 const navHeight = 64
 
 const Container = styled.nav`
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #fff;
   width: 100%;
   height: ${navHeight}px;
   box-sizing: border-box;
   padding: 0 104px;
+
+  @media (max-width: 1024px) {
+    padding: 0 16px;
+  }
 `
 
 const Text = styled.div`

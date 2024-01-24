@@ -3,7 +3,6 @@ import styled from "styled-components"
 
 const Container = styled.section`
   width: 100%;
-  height: 218px;
   padding: 64px 104px 72px;
   box-sizing: border-box;
   display: flex;

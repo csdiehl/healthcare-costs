@@ -7,8 +7,15 @@ const Container = styled.section`
   height: 441px;
   padding: 80px 104px;
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 350px minmax(0, 1fr);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    height: auto;
+    padding: 80px 16px;
+  }
 `
 
 const BigNumber = styled.h2`
@@ -28,11 +35,28 @@ const TextWrapper = styled.div`
   gap: 16px;
 `
 
-const MainContent = styled.div`
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  grid-template-rows: auto auto auto;
-  grid-column-gap: 16px;
+const cardStyles = `
+  border-radius: 2px;
+  border: 1px solid #DEE9F1;
+  background: #FFF;
+  padding: 24px 28px;
+  height: 100%;
+    display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
+const NumCard = styled.div`
+  ${cardStyles}
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+`
+
+const ChartCard = styled.div`
+  ${cardStyles}
+  width: 100%;
 `
 
 const MainSection = ({ data }) => {
@@ -44,14 +68,17 @@ const MainSection = ({ data }) => {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </TextWrapper>
       </div>
-      <MainContent>
+
+      <NumCard>
         <p>Average Price</p>
-        <p>Typical Price Range</p>
         <BigNumber>$106</BigNumber>
+        <p>{data.location}</p>
+      </NumCard>
+      <ChartCard>
+        <p>Typical Price Range</p>
         <RangeChart data={data.costs} maxValue={data.max} />
         <p>{data.location}</p>
-        <p>{data.location}</p>
-      </MainContent>
+      </ChartCard>
     </Container>
   )
 }

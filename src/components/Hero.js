@@ -8,6 +8,10 @@ const Container = styled.section`
   box-sizing: border-box;
   position: relative;
   padding: 0 104px;
+
+  @media (max-width: 1024px) {
+    padding: 0 16px;
+  }
 `
 
 const Header = styled.h1`
@@ -17,6 +21,12 @@ const Header = styled.h1`
   line-height: 120%;
   margin: 0;
   padding: 0;
+  word-break: break-all;
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    font-size: 4rem;
+  }
 `
 
 const Title = styled.div`
