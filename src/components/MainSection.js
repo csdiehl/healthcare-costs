@@ -71,12 +71,13 @@ const MainSection = ({ data }) => {
 
       <NumCard>
         <p>Average Price</p>
-        <BigNumber>$106</BigNumber>
+        <BigNumber>${Math.round(data.costs[1])}</BigNumber>
         <p>{data.location}</p>
       </NumCard>
       <ChartCard>
         <p>Typical Price Range</p>
-        <RangeChart data={data.costs} maxValue={data.max} />
+        {/**NOTE: would really want to use the 95th percentile or similar for the max, but not in data */}
+        <RangeChart data={data.costs} maxValue={data.costs[2] + 10} />
         <p>{data.location}</p>
       </ChartCard>
     </Container>

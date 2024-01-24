@@ -36,15 +36,12 @@ const Title = styled.div`
 
 const Subhead = styled.p``
 
-const Hero = (props) => {
+const Hero = ({ title, description }) => {
   return (
     <Container>
       <Title>
-        <Header>Electrocardiogram (EKG)</Header>
-        <Subhead>
-          An electrocardiogram is a recording of the electrical activity of the
-          heart. It may be called an EKG or ECG.
-        </Subhead>
+        <Header>{title}</Header>
+        <Subhead>{description}</Subhead>
       </Title>
     </Container>
   )

@@ -40,7 +40,7 @@ const Place = styled.h3`
   line-height: 100%;
 `
 
-const NavBar = (props) => {
+const NavBar = ({ state }) => {
   return (
     <Container>
       <Text>
@@ -56,7 +56,7 @@ const NavBar = (props) => {
             alt="location icon"
             src="./location.svg"
           ></img>
-          <Place>California</Place>
+          <Place>{state}</Place>
         </div>
       </Text>
     </Container>

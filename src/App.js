@@ -32,8 +32,8 @@ function App() {
   console.log(data)
   return (
     <Container>
-      <NavBar />
-      <Hero />
+      {data && <NavBar state={data.location} />}
+      {data && <Hero title={data.procedure} description={data.description} />}
       {data && <MainSection data={data} />}
       <Line />
       <Footer />
