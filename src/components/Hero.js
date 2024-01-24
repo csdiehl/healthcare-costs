@@ -34,7 +34,13 @@ const Title = styled.div`
   bottom: 40px;
 `
 
-const Subhead = styled.p``
+const Subhead = styled.p`
+  color: #0a3d62;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+`
 
 const Hero = ({ title, description }) => {
   return (

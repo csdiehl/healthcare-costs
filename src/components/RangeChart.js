@@ -56,26 +56,29 @@ const Stat = styled.p`
 const labels = ["Low", "Average", "High"]
 
 const RangeChart = ({ data, maxValue }) => {
+  const [low, avg, high] = data
+
   return (
     <Container>
       <Chart id="chart">
         <Bar />
         <Range
-          left={(data[0] / maxValue) * 100}
-          width={((data[2] - data[0]) / maxValue) * 100}
+          left={(low / maxValue) * 100}
+          width={((high - low) / maxValue) * 100}
         />
         {data.map((d, i) => {
           const pos = (d / maxValue) * 100
-          return i === 1 ? (
+          const val = Math.round(d)
+          return d === avg ? (
             <Data key={i} left={pos} middle>
-              <Stat>${d}</Stat>
+              <Stat>${val}</Stat>
               <p>{labels[i]}</p>
               <Dot />
             </Data>
           ) : (
             <Data key={i} left={pos}>
               <Dot />
-              <Stat>${d}</Stat>
+              <Stat>${val}</Stat>
               <p>{labels[i]}</p>
             </Data>
           )

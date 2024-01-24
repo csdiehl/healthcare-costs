@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
+import Location from "./Location"
 
-const navHeight = 64
+const navHeight = 64 // nav height in pixels
 
 const Container = styled.nav`
   position: sticky;
@@ -32,14 +33,6 @@ const Description = styled.div`
   height: ${navHeight}px;
 `
 
-const Place = styled.h3`
-  color: #0a3d62;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 100%;
-`
-
 const NavBar = ({ state }) => {
   return (
     <Container>
@@ -49,15 +42,7 @@ const NavBar = ({ state }) => {
           <p>blah blah blah</p>
         </Description>
 
-        <div style={{ display: "flex", alignItems: "flex-end" }}>
-          <img
-            width={16}
-            height={16}
-            alt="location icon"
-            src="./location.svg"
-          ></img>
-          <Place>{state}</Place>
-        </div>
+        <Location location={state} />
       </Text>
     </Container>
   )

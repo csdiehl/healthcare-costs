@@ -7,9 +7,14 @@ const Container = styled.section`
   box-sizing: border-box;
   display: flex;
   align-items: flex-end;
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    padding: 64px 16px 72px;
+  }
 `
 
-const Footer = (props) => {
+const Footer = () => {
   return (
     <Container>
       <div>
@@ -19,7 +24,6 @@ const Footer = (props) => {
           non-commercial use only.
         </p>
       </div>
-
       <div>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam malesuada
