@@ -7,8 +7,8 @@ const Container = styled.section`
   height: 441px;
   padding: 80px 104px;
   box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 350px minmax(0, 1fr);
 `
 
 const BigNumber = styled.h2`
@@ -29,21 +29,10 @@ const TextWrapper = styled.div`
 `
 
 const MainContent = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-`
-
-const DataVizCard = styled.div`
-  display: flex;
-  padding: 24px 28px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  flex: 1 0 0;
-  box-sizing: border-box;
-  border-radius: 2px;
-  border: 1px solid #dee9f1;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: auto auto auto;
+  grid-column-gap: 16px;
 `
 
 const MainSection = ({ data }) => {
@@ -56,16 +45,12 @@ const MainSection = ({ data }) => {
         </TextWrapper>
       </div>
       <MainContent>
-        <DataVizCard>
-          <p>Average Price</p>
-          <BigNumber>$106</BigNumber>
-          <p>California</p>
-        </DataVizCard>
-        <DataVizCard>
-          <p>Typical Price Range</p>
-          <RangeChart data={data.costs} maxValue={data.max} />
-          <p>California</p>
-        </DataVizCard>
+        <p>Average Price</p>
+        <p>Typical Price Range</p>
+        <BigNumber>$106</BigNumber>
+        <RangeChart data={data.costs} maxValue={data.max} />
+        <p>{data.location}</p>
+        <p>{data.location}</p>
       </MainContent>
     </Container>
   )

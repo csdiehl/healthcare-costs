@@ -24,6 +24,14 @@ const Description = styled.div`
   height: ${navHeight}px;
 `
 
+const Place = styled.h3`
+  color: #0a3d62;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+`
+
 const NavBar = (props) => {
   return (
     <Container>
@@ -33,7 +41,15 @@ const NavBar = (props) => {
           <p>blah blah blah</p>
         </Description>
 
-        <h2>California</h2>
+        <div style={{ display: "flex", alignItems: "flex-end" }}>
+          <img
+            width={16}
+            height={16}
+            alt="location icon"
+            src="./location.svg"
+          ></img>
+          <Place>California</Place>
+        </div>
       </Text>
     </Container>
   )
