@@ -2,9 +2,15 @@
 
 This is a sample project for The Dataface. It loads healthcare care and displays a simple chart.
 
+## Tools / Dependencies
+
+- **React-router** for page routing
+- **Styled-components** for ccs-in-js styling
+- **d3-dsv** for parsing csv files
+
 ## Range chart
 
-This chart is rendered in simple HTML and CSS. There is no need for SVG and D3 for these simple elements, so this allows for easier responsive resizing. The maximum value is currently set just slightly above the 75th percentile value. In future versions, it could be set to something more easily compared across states - for example the 75th or 95th percentile for all states.
+This chart is rendered in simple HTML and CSS - this allows for easier responsive resizing compared to svg. The maximum value is currently set just slightly above the 75th percentile value. In future versions, it could be set to something more easily compared across states - for example the 95th percentile for all states.
 
 ## Responsive sizing
 
