@@ -5,7 +5,6 @@ export function formatData(costs, labels, state, slug) {
 
   // get the label information
   const labelInfo = labels.find((d) => d.slug === slug)
-
   if (!labelInfo) return { error: "label info not found" }
 
   const { id, label, label_detailed } = labelInfo

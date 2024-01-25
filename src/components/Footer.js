@@ -12,6 +12,10 @@ const Container = styled.section`
   @media (max-width: 768px) {
     padding: 64px 16px 72px;
   }
+
+  p {
+    margin: 4px 0;
+  }
 `
 
 const Footer = () => {
@@ -19,7 +23,7 @@ const Footer = () => {
     <Container>
       <div>
         <h3>Medical Costs</h3>
-        <p>
+        <p style={{ color: "#999" }}>
           Copyright ©2024. All rights reserved. Website for personal,
           non-commercial use only.
         </p>
@@ -31,7 +35,11 @@ const Footer = () => {
           leo, feugiat sit amet dui luctus, congue feugiat tortor. Aliquam
           tempus vitae arcu nec dictum.
         </p>
-        <p>Email us</p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+          <p>Email us</p>
+          <p>Privacy Policy</p>
+          <p>Terms & Conditions</p>
+        </div>
       </div>
     </Container>
   )

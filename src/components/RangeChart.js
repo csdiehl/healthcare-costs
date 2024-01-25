@@ -69,17 +69,22 @@ const RangeChart = ({ data, maxValue }) => {
         {data.map((d, i) => {
           const pos = (d / maxValue) * 100
           const val = Math.round(d)
-          return d === avg ? (
-            <Data key={i} left={pos} middle>
-              <Stat>${val}</Stat>
-              <p>{labels[i]}</p>
-              <Dot />
-            </Data>
-          ) : (
-            <Data key={i} left={pos}>
-              <Dot />
-              <Stat>${val}</Stat>
-              <p>{labels[i]}</p>
+          const isAverage = d === avg
+          return (
+            <Data key={i} left={pos} middle={isAverage}>
+              {isAverage ? (
+                <>
+                  <Stat>${val}</Stat>
+                  <p>{labels[i]}</p>
+                  <Dot />
+                </>
+              ) : (
+                <>
+                  <Dot />
+                  <Stat>${val}</Stat>
+                  <p>{labels[i]}</p>
+                </>
+              )}
             </Data>
           )
         })}

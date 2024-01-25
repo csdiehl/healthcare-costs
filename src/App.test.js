@@ -1,8 +1,15 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react"
+import App from "./App"
+import RangeChart from "./components/RangeChart"
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test("renders chart title", () => {
+  render(<App />)
+  const title = screen.getByText(/typical price range/i)
+  expect(title).toBeInTheDocument()
+})
+
+test("renders text nodes for every data point", () => {
+  render(<RangeChart data={[50, 100, 200]} maxValue={220} />)
+  const low = screen.getByText(/$50/i)
+  expect(low).toBeInTheDocument()
+})
